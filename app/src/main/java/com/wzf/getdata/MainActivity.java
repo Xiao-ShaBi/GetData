@@ -21,31 +21,31 @@ public class MainActivity extends AppCompatActivity {
         text = (TextView) findViewById(R.id.tv_test);
     }
 
+    RefalshData refalshData = new RefalshData() {
+        @Override
+        public boolean refalshOrNot() {
+            /**
+             * 这里true可以接收到数据的更新，
+             * false 只接收一次数据，不再接受之后的更新
+             */
+            return true;
+        }
+
+        @Override
+        public void refalsh(Class clazz) {
+            DataBean datas = StoreData.getStore().getDatas(DataBean.class, null);
+            if (datas != null)
+                text.setText(datas.toString());
+
+        }
+    };
+
     /**
      * 取本地数据
      *
      * @param v
      */
     public void getdata(View v) {
-
-        RefalshData refalshData = new RefalshData() {
-            @Override
-            public boolean refalshOrNot() {
-                /**
-                 * 这里true可以接收到数据的更新，
-                 * false 只接收一次数据，不再接受之后的更新
-                 */
-                return true;
-            }
-
-            @Override
-            public void refalsh(Class clazz) {
-                DataBean datas = StoreData.getStore().getDatas(DataBean.class, null);
-                if (datas != null)
-                    text.setText(datas.toString());
-
-            }
-        };
 
         DataBean datas = StoreData.getStore().getDatas(DataBean.class, refalshData);
 
@@ -72,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
         count++;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        StoreData.getStore().remove(DataBean.class, refalshData);
+    }
 }
 

@@ -56,6 +56,9 @@ public class StoreData {
             int size = requestData.list.size();
             for (int i = size - 1; i >= 0; i--) {
                 RefalshData refalshData = requestData.list.get(i);
+                if (refalshData == null)
+                    continue;
+
                 refalshData.refalsh(clazz);
                 /**
                  * 不是true意味着数据更新时不通知他
@@ -88,6 +91,21 @@ public class StoreData {
 
         datas.put(clazz, new RequestData(refalshData));
         return null;
+    }
+
+    /**
+     * todo
+     * !!!注意了，每当请求了数据的时候，就需要注意是否还有对象存在其中防止内存泄露
+     * 每次请求数据之后请在不需要的时候或者即将销毁的时候清除list中的对象
+     *
+     * @param clazz
+     * @param refalshData
+     */
+    public void remove(Class clazz, RefalshData refalshData) {
+        RequestData requestData = datas.get(clazz);
+        if (refalshData != null) {
+            requestData.remove(refalshData);
+        }
     }
 
 }

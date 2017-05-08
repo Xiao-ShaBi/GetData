@@ -45,4 +45,15 @@ public class RequestData {
             this.obj = obj;
 
     }
+
+    public void remove(RefalshData refalsh) {
+        if (list != null)
+            list.remove(refalsh);
+
+    }
+
+    public void removeAll() {
+        if (list != null)
+            list.clear();
+    }
 }
