@@ -1,5 +1,7 @@
 # GetData
 将请求数据与获取数据分开
+app:           为简单的demo
+GetDataLib：   为编写的库
 
 ## 旨在减少数据请求等待时间
 
