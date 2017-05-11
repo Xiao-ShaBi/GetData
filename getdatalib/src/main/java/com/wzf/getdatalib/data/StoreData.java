@@ -103,8 +103,10 @@ public class StoreData {
      */
     public void remove(Class clazz, RefalshData refalshData) {
         RequestData requestData = datas.get(clazz);
-        if (refalshData != null) {
-            requestData.remove(refalshData);
+        synchronized (StoreData.class) {
+            if (refalshData != null) {
+                requestData.remove(refalshData);
+            }
         }
     }
 
