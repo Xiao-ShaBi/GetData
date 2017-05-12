@@ -24,4 +24,5 @@ android {
 dependencies {
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.alibaba:fastjson:1.1.57.android'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
 }
