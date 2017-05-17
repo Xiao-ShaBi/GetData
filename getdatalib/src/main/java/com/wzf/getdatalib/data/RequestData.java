@@ -1,6 +1,6 @@
 package com.wzf.getdatalib.data;
 
-import com.wzf.getdatalib.RefalshData;
+import com.wzf.getdatalib.ReflashData;
 
 import java.util.ArrayList;
 
@@ -15,14 +15,14 @@ public class RequestData {
     /**
      * 请求过数据的对象
      */
-    public ArrayList<RefalshData> list;
+    public ArrayList<ReflashData> list;
 
     /**
      * 请求的数据
      */
     public Object obj;
 
-    public synchronized void setRequestList(RefalshData refalsh) {
+    public synchronized void setRequestList(ReflashData refalsh) {
         if (list == null)
             list = new ArrayList<>();
 
@@ -36,8 +36,8 @@ public class RequestData {
         this.obj = obj;
     }
 
-    public RequestData(RefalshData refalshData) {
-        setRequestList(refalshData);
+    public RequestData(ReflashData reflashData) {
+        setRequestList(reflashData);
     }
 
     public void setData(Object obj) {
@@ -46,7 +46,7 @@ public class RequestData {
 
     }
 
-    public void remove(RefalshData refalsh) {
+    public void remove(ReflashData refalsh) {
         if (list != null)
             list.remove(refalsh);
 

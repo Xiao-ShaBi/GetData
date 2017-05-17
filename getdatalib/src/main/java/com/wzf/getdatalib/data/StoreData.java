@@ -1,6 +1,6 @@
 package com.wzf.getdatalib.data;
 
-import com.wzf.getdatalib.RefalshData;
+import com.wzf.getdatalib.ReflashData;
 
 import java.util.HashMap;
 
@@ -55,16 +55,16 @@ public class StoreData {
 
             int size = requestData.list.size();
             for (int i = size - 1; i >= 0; i--) {
-                RefalshData refalshData = requestData.list.get(i);
-                if (refalshData == null)
+                ReflashData reflashData = requestData.list.get(i);
+                if (reflashData == null)
                     continue;
 
-                refalshData.refalsh(clazz);
+                reflashData.refalsh(clazz);
                 /**
                  * 不是true意味着数据更新只需要更新一次即可
                  */
-                if (refalshData.refalshOrNot() != true)
-                    requestData.list.remove(refalshData);
+                if (reflashData.refalshOrNot() != true)
+                    requestData.list.remove(reflashData);
 
             }
         } else {
@@ -80,16 +80,16 @@ public class StoreData {
      * <p>
      * return null 意味着没有取到数据，等待刷新返回数据即可
      */
-    public <T> T getDatas(Class<T> clazz, RefalshData refalshData) {
+    public <T> T getDatas(Class<T> clazz, ReflashData reflashData) {
         if (datas.containsKey(clazz)) {
             RequestData requestData = datas.get(clazz);
-            if (refalshData != null && refalshData.refalshOrNot())
-                requestData.setRequestList(refalshData);
+            if (reflashData != null && reflashData.refalshOrNot())
+                requestData.setRequestList(reflashData);
 
             return (T) requestData.obj;
         }
 
-        datas.put(clazz, new RequestData(refalshData));
+        datas.put(clazz, new RequestData(reflashData));
         return null;
     }
 
@@ -99,12 +99,12 @@ public class StoreData {
      * 每次请求数据之后请在不需要的时候或者即将销毁的时候清除list中的对象
      *
      * @param clazz
-     * @param refalshData
+     * @param reflashData
      */
-    public void remove(Class clazz, RefalshData refalshData) {
+    public void remove(Class clazz, ReflashData reflashData) {
         RequestData requestData = datas.get(clazz);
-        if (refalshData != null) {
-            requestData.remove(refalshData);
+        if (reflashData != null) {
+            requestData.remove(reflashData);
         }
     }
 

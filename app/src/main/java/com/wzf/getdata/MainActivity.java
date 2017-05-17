@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wzf.getdatalib.RefalshData;
+import com.wzf.getdatalib.ReflashData;
 import com.wzf.getdatalib.data.StoreData;
 import com.wzf.getdatalib.getfromnew.NetUtils;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         text = (TextView) findViewById(R.id.tv_test);
     }
 
-    RefalshData refalshData = new RefalshData() {
+    ReflashData reflashData = new ReflashData() {
         @Override
         public boolean refalshOrNot() {
             /**
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void getdata(View v) {
 
-        DataBean datas = StoreData.getStore().getDatas(DataBean.class, refalshData);
+        DataBean datas = StoreData.getStore().getDatas(DataBean.class, reflashData);
 
         if (datas != null)
             text.setText(datas.toString());
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        StoreData.getStore().remove(DataBean.class, refalshData);
+        StoreData.getStore().remove(DataBean.class, reflashData);
     }
 }
 

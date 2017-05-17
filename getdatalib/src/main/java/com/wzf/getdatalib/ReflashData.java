@@ -5,7 +5,7 @@ package com.wzf.getdatalib;
  * 用来修饰请求数据的对象，当数据得到后回调出去
  */
 
-public interface RefalshData {
+public interface ReflashData {
 
     /**
      * 记录当数据更新后是否刷新数据
