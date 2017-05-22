@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         text = (TextView) findViewById(R.id.tv_test);
+
+//        Glide.with(new Fragment());
     }
 
     ReflashData reflashData = new ReflashData() {

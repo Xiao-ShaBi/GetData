@@ -30,5 +30,4 @@ public class App extends Application {
 
         OkHttpUtils.initClient(okHttpClient);
     }
-    // 这是个例子，这里做更新
 }
