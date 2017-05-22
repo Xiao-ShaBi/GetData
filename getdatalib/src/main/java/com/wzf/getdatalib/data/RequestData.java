@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class RequestData {
 
+    public boolean is_local = false;
 
     /**
      * 请求过数据的对象
@@ -43,7 +44,6 @@ public class RequestData {
     public void setData(Object obj) {
         if (obj != null)
             this.obj = obj;
-
     }
 
     public void remove(ReflashData refalsh) {

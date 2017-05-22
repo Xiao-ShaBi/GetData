@@ -2,8 +2,6 @@ package com.wzf.getdatalib.getfromnew;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.Objects;
-
 /**
  * Created by wzf on 2017/5/8.
  */
@@ -19,7 +17,7 @@ public class JsonUtls {
      * @return
      * @throws Exception
      */
-    public static <T> T fromJson(String str, Class<T> clazz) throws Exception {
+    public static <T> T fromJson(String str, Class<T> clazz) {
         return (T) JSON.parseObject(str, clazz);
     }
 
@@ -29,7 +27,7 @@ public class JsonUtls {
      * @param obj
      * @return
      */
-    public static String toJson(Objects obj) {
+    public static String toJson(Object obj) {
         return JSON.toJSONString(obj);
     }
 }
