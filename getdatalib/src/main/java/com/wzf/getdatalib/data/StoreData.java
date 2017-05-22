@@ -102,6 +102,28 @@ public class StoreData {
     }
 
     /**
+     * 這裡獲取數據需要添加一個fragment或者context對象，在destory中調用{@link #remove(java.lang.Object)}
+     *
+     * @param obj
+     * @param clazz
+     * @param reflashData
+     * @param <T>
+     * @return
+     */
+    public <T> T getDatas(Object obj, Class<T> clazz, ReflashData reflashData) {
+        return null;
+    }
+
+    /**
+     * 根据传入的fragment或者activity注销
+     *
+     * @param obj
+     */
+    public void remove(Object obj) {
+
+    }
+
+    /**
      * 取数据
      * <p>
      * return null 意味着没有取到数据，等待刷新返回数据即可
