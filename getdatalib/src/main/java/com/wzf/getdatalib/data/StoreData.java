@@ -61,7 +61,7 @@ public class StoreData {
 
                 refalshData.refalsh(clazz);
                 /**
-                 * 不是true意味着数据更新时不通知他
+                 * 不是true意味着数据更新只需要更新一次即可
                  */
                 if (refalshData.refalshOrNot() != true)
                     requestData.list.remove(refalshData);
