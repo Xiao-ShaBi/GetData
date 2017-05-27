@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+//上传代码到仓库
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -19,6 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        incremental = true;
+        preDexLibraries = false
+        javaMaxHeapSize "4g" // 2g should be also OK
+    }
+
 }
 
 dependencies {
@@ -26,3 +39,15 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.57.android'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
 }
+
+publish {
+    userOrg = 'xiaoerhuo'//bintray.com用户名
+    groupId = 'com.wzf'//jcenter上的路径
+    artifactId = 'datastore'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'Oh hi, this is a nice description for a project, right?'//描述，不重要
+    website = 'https://github.com/Xiao-ShaBi/GetData'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
+
+//更新库的时候使用的代码，放在命令行中使用
+//gradlew clean build bintrayUpload -PbintrayUser=xiaoerhuo -PbintrayKey=c1f273ddef4875598e21b2561a755961f223139c -PdryRun=false --stacktrace

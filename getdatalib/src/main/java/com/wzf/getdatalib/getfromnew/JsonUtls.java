@@ -15,7 +15,6 @@ public class JsonUtls {
      * @param clazz
      * @param <T>
      * @return
-     * @throws Exception
      */
     public static <T> T fromJson(String str, Class<T> clazz) {
         return (T) JSON.parseObject(str, clazz);
