@@ -47,7 +47,7 @@ public class RequestData {
     }
 
     public void remove(ReflashData refalsh) {
-        if (list != null)
+        if (list != null && list.contains(refalsh))
             list.remove(refalsh);
 
     }

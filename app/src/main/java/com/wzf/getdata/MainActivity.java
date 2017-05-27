@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         text = (TextView) findViewById(R.id.tv_test);
-
+//        getSupportFragmentManager().beginTransaction().add()
 //        Glide.with(new Fragment());
     }
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void getdata(View v) {
 
-        DataBean datas = StoreData.getStore().getDatas(DataBean.class, reflashData);
+        DataBean datas = StoreData.getStore().getDatas(this, DataBean.class, reflashData);
 
         if (datas != null)
             text.setText(datas.toString());
@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void request(View v) {
-
         NetUtils.get(url + count, null, DataBean.class, new NetUtils.SimpleJson());
 
         //每次点击换一个url
@@ -77,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        StoreData.getStore().remove(DataBean.class, reflashData);
+//        StoreData.getStore().remove(DataBean.class, reflashData);
+        StoreData.getStore().remove(this);
     }
 }
 

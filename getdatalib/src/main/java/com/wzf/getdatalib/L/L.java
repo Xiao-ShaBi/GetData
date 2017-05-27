@@ -13,6 +13,5 @@ public class L {
     public static void e(String str) {
         if (DEBUG)
             Log.e("wzf", str);
-
     }
 }

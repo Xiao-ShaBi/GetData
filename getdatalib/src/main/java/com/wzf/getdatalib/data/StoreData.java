@@ -2,6 +2,7 @@ package com.wzf.getdatalib.data;
 
 import com.wzf.getdatalib.ReflashData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -17,6 +18,8 @@ public class StoreData {
      * 用来存储网上请求到的数据
      */
     HashMap<Class, RequestData> datas = new HashMap<>();
+
+    HashMap<Object, ArrayList<BindingLife>> tags = new HashMap<>();
 
     private StoreData() {
 
@@ -103,6 +106,8 @@ public class StoreData {
 
     /**
      * 這裡獲取數據需要添加一個fragment或者context對象，在destory中調用{@link #remove(java.lang.Object)}
+     * 与activity绑定
+     * 根据tag绑定 数据组，销毁时根据tag销毁
      *
      * @param obj
      * @param clazz
@@ -111,16 +116,47 @@ public class StoreData {
      * @return
      */
     public <T> T getDatas(Object obj, Class<T> clazz, ReflashData reflashData) {
+        T datas = getDatas(clazz, reflashData);
+        if (datas != null && reflashData != null) {
+            if (reflashData.refalshOrNot()) {
+                if (obj != null) {
+                    if (tags.containsKey(obj)) {
+                        ArrayList<BindingLife> bindingLifes = tags.get(obj);
+                        for (int i = 0; i < bindingLifes.size(); i++) {
+                            if (bindingLifes.get(i).getRequestData() == reflashData) {
+                                return datas;
+                            }
+                        }
+                        bindingLifes.add(new BindingLife(clazz, reflashData));
+                    }
+                }
+            }
+            return datas;
+        }
+
         return null;
     }
 
     /**
      * 根据传入的fragment或者activity注销
+     * 根据tag清空请求的数据
      *
      * @param obj
      */
     public void remove(Object obj) {
-
+        if (obj == null || !tags.containsKey(obj)) {
+            return;
+        }
+        ArrayList<BindingLife> bindingLifes = tags.get(obj);
+        tags.remove(obj);
+        if (bindingLifes == null || bindingLifes.size() <= 0) {
+            return;
+        }
+        int size = bindingLifes.size();
+        for (int i = 0; i < size; i++) {
+            BindingLife bindingLife = bindingLifes.get(i);
+            remove(bindingLife.getClazz(), bindingLife.getRequestData());
+        }
     }
 
     /**
@@ -153,6 +189,9 @@ public class StoreData {
      * @param reflashData
      */
     public void remove(Class clazz, ReflashData reflashData) {
+        if (clazz == null || reflashData == null) {
+            return;
+        }
         RequestData requestData = datas.get(clazz);
         if (reflashData != null) {
             requestData.remove(reflashData);
