@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.wzf.getdatalib.ReflashData;
 import com.wzf.getdatalib.data.StoreData;
-import com.wzf.getdatalib.getfromnew.NetUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void request(View v) {
-        NetUtils.get(url + count, null, DataBean.class, new NetUtils.SimpleJson());
+//        NetUtils.get(url + count, null, DataBean.class, new NetUtils.SimpleJson());
 
         //每次点击换一个url
         count++;

@@ -44,7 +44,7 @@ publish {
     userOrg = 'xiaoerhuo'//bintray.com用户名
     groupId = 'com.wzf'//jcenter上的路径
     artifactId = 'datastore'//项目名称
-    publishVersion = '1.0.1'//版本号  //使用a.0.0这种方式标注的版本号是只添加存储功能，不添加，解析和联网请求功能的
+    publishVersion = 'a.0.1'//版本号  //使用a.0.0这种方式标注的版本号是只添加存储功能，不添加，解析和联网请求功能的
     desc = 'Oh hi, this is a nice description for a project, right?'//描述，不重要
     website = 'https://github.com/Xiao-ShaBi/GetData'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
