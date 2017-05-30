@@ -10,7 +10,11 @@
 * 其中回调中refalshOrNot返回为true，一直监控数据变化，为false只获取一次
 * 这里添加依赖可以在gradle中添加
 ```
-compile 'com.wzf:datastore:1.0.0'
+//有联网封装，缓存封装
+compile 'com.wzf:datastore:1.0.1'
+//OR
+// 单独的数据存储
+compile 'com.wzf:datastore:a.0.1'
 ```
 
 ## 注意
