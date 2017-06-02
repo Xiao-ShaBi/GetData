@@ -29,11 +29,14 @@ public class CatchUtils {
      *
      * @param context
      * @param key
+     * @param defult
      * @return
      */
-    public static String getSPCatch(Context context, String key) {
-        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString(key, "");
+    public static String getSPCatch(Context context, String key, String defult) {
+        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString(key, defult);
     }
 
-    
+    public static String getSPCatch(Context context, String key) {
+        return getSPCatch(context, key, "");
+    }
 }

@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class StoreData {
 
-    private static volatile StoreData store;
+    private static volatile StoreData store = null;
 
     /**
      * 用来存储网上请求到的数据
