@@ -5,14 +5,14 @@ import android.text.TextUtils;
 
 import com.wzf.getdatalib.ReflashData;
 import com.wzf.getdatalib.getfromnew.JsonUtls;
-import com.wzf.getdatalib.local.CatchUtils;
+import com.wzf.getdatalib.local.CacheUtils;
 
 /**
  * Created by wzf on 2017/5/22.
  * 给存储的数据添加缓存
  */
 
-public class CatchStore {
+public class CacheStore {
 
     /**
      * 这里使用的context最好为app的
@@ -28,7 +28,7 @@ public class CatchStore {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                CatchUtils.saveSPCatch(context, clazz.getSimpleName(), JsonUtls.toJson(obj));
+                CacheUtils.saveSPCache(context, clazz.getSimpleName(), JsonUtls.toJson(obj));
             }
         }).start();
     }
@@ -43,9 +43,9 @@ public class CatchStore {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String spCatch = CatchUtils.getSPCatch(context, clazz.getSimpleName());
-                if (!TextUtils.isEmpty(spCatch)) {
-                    T t = JsonUtls.fromJson(spCatch, clazz);
+                String spCache = CacheUtils.getSPCache(context, clazz.getSimpleName());
+                if (!TextUtils.isEmpty(spCache)) {
+                    T t = JsonUtls.fromJson(spCache, clazz);
                     StoreData.getStore().setDatas(clazz, t, true);
                 }
             }

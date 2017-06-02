@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  * 用来存储数据到本地
  */
 
-public class CatchUtils {
+public class CacheUtils {
 
     public static final String FILE_NAME = "datastore_wzf_file_name";
 
@@ -19,7 +19,7 @@ public class CatchUtils {
      * @param key
      * @param value
      */
-    public static void saveSPCatch(Context context, String key, String value) {
+    public static void saveSPCache(Context context, String key, String value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         sharedPreferences.edit().putString(key, value).commit();
     }
@@ -32,11 +32,11 @@ public class CatchUtils {
      * @param defult
      * @return
      */
-    public static String getSPCatch(Context context, String key, String defult) {
+    public static String getSPCache(Context context, String key, String defult) {
         return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString(key, defult);
     }
 
-    public static String getSPCatch(Context context, String key) {
-        return getSPCatch(context, key, "");
+    public static String getSPCache(Context context, String key) {
+        return getSPCache(context, key, "");
     }
 }

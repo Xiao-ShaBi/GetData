@@ -19,6 +19,9 @@ public class StoreData {
      */
     HashMap<Class, RequestData> datas = new HashMap<>();
 
+    /**
+     * 存储设置了tag的请求数据的对象
+     */
     HashMap<Object, ArrayList<BindingLife>> tags = new HashMap<>();
 
     private StoreData() {
@@ -155,6 +158,9 @@ public class StoreData {
         int size = bindingLifes.size();
         for (int i = 0; i < size; i++) {
             BindingLife bindingLife = bindingLifes.get(i);
+            if (bindingLife == null) {
+                continue;
+            }
             remove(bindingLife.getClazz(), bindingLife.getRequestData());
         }
     }
@@ -197,5 +203,4 @@ public class StoreData {
             requestData.remove(reflashData);
         }
     }
-
 }
